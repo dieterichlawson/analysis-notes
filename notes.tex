@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage{fullpage,graphicx,psfrag,amsmath,amsfonts,verbatim,titling}
+\usepackage{fullpage,graphicx,psfrag,amsmath,amsfonts,amssymb,verbatim,titling,todonotes}
 \usepackage[small,bf]{caption}
 \input defs.tex
 \setlength{\parindent}{0pt}
@@ -8,6 +8,7 @@
 \begin{document}
 \maketitle
 \tableofcontents
+\listoftodos
 \newpage
 \section{Foundations of the Reals}
   \subsection{The Field Axioms}
@@ -71,7 +72,46 @@
     A sequence is \emph{decreasing} if $a_{n+1} \leq a_n$ for all $n \in \naturals$\\
     A sequences is \emph{strictly} increasing or decreasing if equality never holds.\\
     A sequence is \emph{monotone} if it is increasing or decreasing.\\
-  \subsection{Convergence}
-    
 
+    \todo[inline]{Define subsequences}
+  \subsection{Convergence}
+    A sequence, $\{a_n\}$ is convergent if $\exists\;\ell \in \reals$ such that $\forall \epsilon > 0$ 
+    $\exists N$ such that $|a_n - \ell| < \epsilon$ $\forall n \geq N$. $\ell$ is called the limit of $\{a_n\}$.\\
+    
+    In words, this means that a sequence is convergent if for any positive number epsilon we can pick a 
+    point in the sequence sufficiently far out such that all elements of the sequence after that point 
+    are within $\epsilon$ of $\ell$. $\epsilon$ could be any positive number, but the idea is that as 
+    $\epsilon$ becomes arbitrarily small, we can find points of the sequence that are arbitrarily close 
+    to $\ell$.\\
+
+    In general, proofs of convergence will follow a challenge-response format where given an $\epsilon$
+    you construct an $N$ such that the criterion holds.\\
+
+    \todo[inline]{Define $\limsup$ and $\liminf$}
+  \subsection{A bounded, monotone sequence converges}
+    \thm A bounded, monotone sequence converges\\
+
+    \pf Assume a sequence, $\{a_n\}$, is increasing (WLOG) and bounded, and let $\ell = \sup S$ where 
+    $S = \{a_n \mid n \in \naturals\}$ (i.e. the set of elements of the sequence). We claim that 
+    $\limninf a_n = \ell$, or equivalently that $\{a_n\}$ converges to the limit $\ell$.\\
+
+    Let $\epsilon > 0$. Then it must be that $\ell - \epsilon$ is \emph{not} and upper bound because
+    $\ell$ is the supremum of $S$. Thus there exists $a_N \in S$ such that $a_N > \ell - \epsilon$. This
+    implies that for all $n > N$, $a_n \geq a_N > \ell - \epsilon$.\\
+
+    On the other hand, because all $a_n$ are members of $S$ and $\ell$ is the supremum, $a_n < \ell + \epsilon$
+    for all $n \geq N$. Thus for $n \geq N$, $a_n > \ell - \epsilon$ and $a_n < \ell + epsilon$, which implies
+    that $|a_n - \ell| < \epsilon$. Therefore by the definition of convergence, the $\{a_n\}$ converges. $\blacksquare$
+  \subsection{The Bolzano-Weierstrass Theorem}
+    The Bolzano-Weierstrass Theorem is of great importance to analysis and states that any bounded sequence has a 
+    convergent subsequence.\\
+    
+    This is not immediately obvious because the sequence $a_n = (-1)^n$ is bounded but does not converge. 
+    However, if we take the subsequences of $n_i = 2n$ or $n_i = 2n-1$ for $n \in \naturals$ then we have only 
+    the odd or even terms of $\{a_n\}$. Those subsequences consist of only $1$ and $-1$, respectively, and are 
+    thus convergent. We will now make this intuition more formal.\\
+
+    \thm Any bounded sequence has a convergent subsequence.\\
+
+    \pf
 \end{document}
