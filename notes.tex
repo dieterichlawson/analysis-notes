@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,graphicx,psfrag,amsmath,amsfonts,verbatim,titling}
+\usepackage[small,bf]{caption}
+\input defs.tex
+\setlength{\parindent}{0pt}
+\title{Math 171 Notes}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Foundations of the Reals}
+  \subsection{The Field Axioms}
+    The field axioms are a set of axioms that we accept as the foundation of the reals.\\\\
+    $\forall a,b,c \in \reals$:\\
+
+    \textbf{F1 Commutativity}   $a+b = b+a$\\
+    \textbf{F2 Associativity}  $a+(b +c) = (a+b)+c$\\
+    \textbf{F3 Distributive}  $a(b +c) = ab+ac$\\
+    \textbf{F4 Identity}  $\exists\;0,1$ such that $0 + a = a$, $1 \cdot a = a$ \\
+    \textbf{F5 Additive Inverse}  $\exists\;-a$ such that $a + (-a) = 0$\\
+    \textbf{F5 Multiplicative Inverse}  $\exists\;1/a$ such that $a(1/a) = 1$
+  \subsection{The Order Axioms}
+    \textbf{O1 Positive Numbers} $\exists$ a set $P \subset \mathbf \reals$ such that for all $a \in \reals$ either
+    $a \in P$, $-a \in P$, or $a = 0$.\\
+    \textbf{O2} $a,b \in P$ implies that $a\cdot b$ and $a + b$ are in $P$\\
+
+    Thus we define $a > b$ as $a - b \in P$ and similarly $a < b$ is defined as $b - a \in P$.\\
+
+    $F$ and $O$ axioms hold for the rationals, $\rationals$, but $O$ does not hold for the complex numbers.
+  \subsection{The Completeness Axiom}
+    Completeness distinguishes the Reals from the Rationals. Intuitively, there are 'holes' in the rationals at
+    irrational numbers like $\sqrt{2}$. To discuss completeness, we need to introduce the "supremum".\\
+
+    Consider a set $S$, such that $S \subset \reals$.\\
+    $S$ is \emph{bounded above} if $\exists$ $a \in \reals$ such that $x \leq a$ $\forall x \in S$.\\
+    $S$ is \emph{bounded below} if $\exists$ $a \in \reals$ such that $x \geq a$ $\forall x \in S$.\\
+    $S$ is \emph{bounded} if it is bounded above and below.\\
+
+    \textbf{The Completeness Axiom} If $S \subset \reals$ is nonempty and bounded above then $\exists$ $a \in \reals$
+    that is a least upper bound or "sup". Specifically, (i) $x \leq a$ $\forall x \in S$ and (ii) $a \leq \beta$ $\forall$ 
+    upper bounds, $\beta$, of $S$.\\
+
+    Supremums are unique by (ii) because if $a_1,a_2$ are upper bounds and $a_1 \leq a_2$ and $a_2 \leq a_1$ then $a_1 = a_2$.
+    Thus it makes sense to talk about "the" supremum.\\
+
+    There is also an "infimum" or greatest lower bound that follows from repeating these arguments with $-S$.
+
+    \subsubsection{Maximum and Supremum are not necessarily the same}
+      It is important to note that the maximum is not necessarily the same thing as the supremum:\\
+
+      The maximum is defined as $a \in S$ such that $x \leq a$ for all $x \in S$\\
+      The supremum is defined as $a$ such that $x \leq a$ for all $x \in S$ and (ii)\\
+
+      Note that the supremum does not have to be in $S$. In fact the max of $S$ exists if and only if the supremum of $S$
+      is a member of $S$, in which case the max of $S$ is equal to the supremum of $S$. Conversely, if $\sup S \notin S$ then
+      the max of $S$ does not exist.\\
+
+      For example take $S = (0,1)$. Then $\sup S = 1$ but $\sup S \notin S$, so $\max S$ does not exist. The sequence
+      $1 - 1/n$ for $n \in \naturals$ comes arbitrarily close to the max of $S$ but never reaches it.\\
+
+      However, any \emph{finite}, nonempty set has a maximum.
+    \subsubsection{Completeness does not hold for $\rationals$}
+      Consider the set $\{x \mid x^2 < 2\}$. The number $\sqrt{2}$ is not a member of $\rationals$ so the supremum of this
+      set cannot be a member of the set. Thus $\rationals$ is not complete, i.e. there are 'holes' at the irrational numbers.
+\section{Sequences}
+  \subsection{Definitions}
+    A sequence is a mapping from $\naturals \to \reals$ and is generally written as $\{a_n\}$.\\
+
+    A sequence is \emph{increasing} if $a_{n+1} \geq a_n$ for all $n \in \naturals$\\
+    A sequence is \emph{decreasing} if $a_{n+1} \leq a_n$ for all $n \in \naturals$\\
+    A sequences is \emph{strictly} increasing or decreasing if equality never holds.\\
+    A sequence is \emph{monotone} if it is increasing or decreasing.\\
+  \subsection{Convergence}
+    
+
+\end{document}
