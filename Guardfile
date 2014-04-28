@@ -2,17 +2,19 @@
 
 require 'colorize'
 
+MAIN_TEX_FILE='notes'
+
 guard :shell do
   watch /(.*\.tex)/ do |m|
     print "#{Time.now.strftime("%H:%M:%S")} Working... "
     STDOUT.flush
-    puts "Done ✔".green if run_command("pdflatex -interaction=nonstopmode #{m[0]}")
+    puts "Done ✔".green if run_command("pdflatex -interaction=nonstopmode #{MAIN_TEX_FILE}.tex")
   end
   watch /(.*)\.bib/ do |m|
     print "#{Time.now.strftime("%H:%M:%S")} Working... " 
     STDOUT.flush
     next unless run_command("bibtex #{m[1]}")
-    puts "Done" if run_command("pdflatex -halt-on-error #{m[1]}.tex")
+    puts "Done" if run_command("pdflatex -halt-on-error #{MAIN_TEX_FILE}.tex")
   end
 end
 

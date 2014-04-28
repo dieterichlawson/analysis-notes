@@ -1,0 +1,45 @@
+\section{Real Series}
+  A \emph{series} is the sum of the terms of a sequence, and is often written as 
+  $\sum_{k=1}^{\infty} a_k$ where $\{a_n\}$ is the related sequence. The sum of the
+  first $n$ terms of a sequence, i.e. $s_n = \sum_{k=1}^n a_k$ is called the $n$th partial sum 
+  of a sequence and is generally denoted as $\{s_n\}$.\\
+  
+  If $\{s_n\}$ has a limit $S$, i.e. if the sequence of partial sums converges, then we say 
+  that the series $\sum_{k=1}^{\infty} a_k$ converges and has sum $S$. If $\{s_n\}$ does 
+  not converge, i.e. does not have a limit, then we say that the series diverges.
+  
+  \subsection{Results on Series}
+    \thm If $\sum_{i=1}^{\infty} a_n$ converges, then $\lim a_n = 0$\\
+
+    \pf \todo[inline]{Prove that if $\sum_{i=1}^{\infty} a_n$ converges, then $\lim a_n = 0$}
+    $\blacksquare$\\
+
+    \textbf{Note:} The converse of the above statement is not true. For example 
+    $\sum_{i=1}^{\infty} 1/n$ does not converge, but $\lim a_n =0$.\\
+
+    \thm If $\sum a_n$, $\sum b_n$ converge to $S$ and $T$ respectively, and $\alpha, \beta \in 
+    \reals$ then $\lim_{n \to \infty} \sum_{k=1}^n \alpha a_n + \sum_{k=1}^n \beta b_n = \alpha 
+    S + \beta T$.\\
+
+    \pf \todo[inline]{Prove linearity of convergence for series}
+    $\blacksquare$
+  \subsection{Absolute Convergence}
+    A series, $\sum_{n=1}^{\infty} a_n$ converges absolutely if $\sum_{n=1}^{\infty} |a_n|$ 
+    converges. If a series converges but does not converge absolutely then it is called 
+    conditionally convergent. This can happen when terms in the series cancel in the normal case
+    but when wrapped in absolute value do not cancel.\\
+
+    You can think of absolute value of a number as a combination of the positive and negative 
+    parts. More specifically, $|a_n| = (a_n)^+ + (a_n)^-$. Then you can rewrite 
+    $\sum_{n=1}^{\infty} a_n$ as $\sum_{n=1}^{\infty} ((a_n)^+ - (a_n)^-)$. Thus the series
+    is absolutely convergent if and only of both $\sum_{n=1}^{\infty} (a_n)^+$ and 
+    $\sum_{n=1}^{\infty} (a_n)^-$ converge.\\
+  \subsection{Rearrangements}
+    A rearrangement of a sequence $\{a_n\}$ is a 1-1 onto mapping $f:\naturals \to \naturals$.
+    Intuitively, it's exactly like what it sounds like -- it just changes the ordering of a 
+    sequence.\\
+
+    If $\sum_{n=1}^{\infty} a_n$ is conditionally convergent, it is possible to reorder the terms
+    and get different limits. Put another way, not all rearrangements converge or converge to 
+    the same limit.
+  \subsection{Power Series}
