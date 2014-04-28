@@ -39,7 +39,7 @@
     $S$ is \emph{bounded} if it is bounded above and below.\\
 
     \textbf{The Completeness Axiom} If $S \subset \reals$ is nonempty and bounded above then $\exists$ $a \in \reals$
-    that is a least upper bound or "sup". Specifically, (i) $x \leq a$ $\forall x \in S$ and (ii) $a \leq \beta$ $\forall$ 
+    that is a least upper bound or supremum. Specifically, (i) $x \leq a$ $\forall x \in S$ and (ii) $a \leq \beta$ $\forall$ 
     upper bounds, $\beta$, of $S$.\\
 
     Supremums are unique by (ii) because if $a_1,a_2$ are upper bounds and $a_1 \leq a_2$ and $a_2 \leq a_1$ then $a_1 = a_2$.
@@ -47,7 +47,7 @@
 
     There is also an "infimum" or greatest lower bound that follows from repeating these arguments with $-S$.
 
-    \subsubsection{Maximum and Supremum are not necessarily the same}
+    \subsubsection{The maximum and supremum of a set are not necessarily the same}
       It is important to note that the maximum is not necessarily the same thing as the supremum:\\
 
       The maximum is defined as $a \in S$ such that $x \leq a$ for all $x \in S$\\
@@ -61,9 +61,16 @@
       $1 - 1/n$ for $n \in \naturals$ comes arbitrarily close to the max of $S$ but never reaches it.\\
 
       However, any \emph{finite}, nonempty set has a maximum.
+  \subsection{Consequences of Completeness}
     \subsubsection{Completeness does not hold for $\rationals$}
       Consider the set $\{x \mid x^2 < 2\}$. The number $\sqrt{2}$ is not a member of $\rationals$ so the supremum of this
       set cannot be a member of the set. Thus $\rationals$ is not complete, i.e. there are 'holes' at the irrational numbers.
+    \subsubsection{The Archimidean Property of the Reals}
+      \todo[inline]{Prove the Archimidean property of the Reals}
+    \subsubsection{$\mathbf{Q}$ and $\mathbf{I}$ are dense in $\mathbf{R}$}
+      \todo[inline]{Prove that $\mathbf{Q}$ and $\mathbf{I}$ are dense in $\mathbf{R}$}
+    \subsubsection{$\mathbf{Q}$ is countable, $\mathbf{R}$ and $\mathbf{I}$ are uncountable}
+      \todo[inline]{Prove that $\mathbf{Q}$ is countable, $\mathbf{R}$ and $\mathbf{I}$ are uncountable}
 \section{Sequences}
   \subsection{Definitions}
     A sequence is a mapping from $\naturals \to \reals$ and is generally written as $\{a_n\}$.\\
@@ -88,7 +95,14 @@
     you construct an $N$ such that the criterion holds.\\
 
     \todo[inline]{Define $\limsup$ and $\liminf$}
-  \subsection{A bounded, monotone sequence converges}
+  \subsubsection{Any convergent sequence is bounded}
+    \thm Any convergent sequence is bounded.\\
+
+    \pf Let $\{a_n\}$ be a convergent sequence with limit $L$. Then there exists an $N$ such that
+    for $n \geq N$, $|a_n- L| < \epsilon$, which implies $a_n < L + \epsilon$ for $n \geq N$. Because
+    $N$ is finite, we then know that $a_n \leq \max(a_1,a_2,\ldots,a_{N-1},L+\epsilon)$ for some
+    $N$ and $\epsilon$. Thus $\{a_n\}$ is bounded. $\blacksquare$
+  \subsubsection{A bounded, monotone sequence converges}
     \thm A bounded, monotone sequence converges\\
 
     \pf Assume a sequence, $\{a_n\}$, is increasing (WLOG) and bounded, and let $\ell = \sup S$ where 
@@ -100,9 +114,12 @@
     implies that for all $n > N$, $a_n \geq a_N > \ell - \epsilon$.\\
 
     On the other hand, because all $a_n$ are members of $S$ and $\ell$ is the supremum, $a_n < \ell + \epsilon$
-    for all $n \geq N$. Thus for $n \geq N$, $a_n > \ell - \epsilon$ and $a_n < \ell + epsilon$, which implies
+    for all $n \geq N$. Thus for $n \geq N$, $a_n > \ell - \epsilon$ and $a_n < \ell + \epsilon$, which implies
     that $|a_n - \ell| < \epsilon$. Therefore by the definition of convergence, the $\{a_n\}$ converges. $\blacksquare$
-  \subsection{The Bolzano-Weierstrass Theorem}
+  \subsubsection{The Squeeze Theorem}
+    \todo[inline]{Prove the Squeeze Theorem}
+
+  \subsection{The Bolzano--Weierstrass Theorem}
     The Bolzano-Weierstrass Theorem is of great importance to analysis and states that any bounded sequence has a 
     convergent subsequence.\\
     
@@ -113,5 +130,35 @@
 
     \thm Any bounded sequence has a convergent subsequence.\\
 
-    \pf
+    \pf Let $\{a_n\}$ be a bounded subsequence. Then there exists a $l,u \in \reals$ such that $l \leq a_n \leq u$ for
+    all $n \in \naturals$. Then we know that $a_n \in [l,u]$ for all positive $n$. Now consider the bisection of
+    this interval into two, giving the intervals:\\
+    \begin{align*}
+      \left[l, \dfrac{l+u}{2}\right] , \left[\dfrac{l+u}{2},u\right]
+    \end{align*}
+    Because there are infinitely many terms in $\{a_n\}$, one or both of these intervals must contain infinitely many
+    terms of $\{a_n\}$. Pick one such interval and label it $I_1$, with its endpoints labeled $l_1$ and $u_1$.\\
+
+    Now repeat this process for $I_1$, bisecting it into two closed intervals, picking one subinterval which contains 
+    infinitely many members of $\{a_n\}$, and labelling its endpoints $l_2$ and $u_2$. Because there are infintely many
+    elements in $\{a_n\}$ it is possible to pick a sequence of closed intervals, $I_n$ such that $I_1 \supset I_2
+    \supset I_3 \supset \cdots$ where the width of $I_n$ is $\frac{u-l}{2^n}$. Additionally, each of these intervals
+    contains infinitely many elements of $\{a_n\}$.\\
+
+    Now choose a positive integer $n_1$ such that $a_{n_1} \in I_1$. Because $I_2$ contains infinitely many elements 
+    of $\{a_n\}$, there exists a positive integer $n_2$ such that $n_2 > n_1$ and $a_{n_2} \in I_2$. Continue picking
+    elements of $\{a_n\}$ in this way to construct a subsequence, $\{a_{n_i}\}$, such that $a_{n_i} \in I_i$ for all $n_i$.
+    We will show that $\{a_{n_i}\}$ converges.\\
+    
+    \textbf{Ending 1} We know that there must be one element, $x$ in all $I_i$. Let $\epsilon > 0$ and pick
+    an interval, $I_N$ such that the width of $I_N$, $\frac{u - l}{2^N}$ is less than epsilon, and pick an 
+    element, $a_{n_K}$ such that $a_{n_K} \in I_N$. $x$ must be in this interval, and by construction 
+    $a_{n_i} \in I_N$ for all $n_i > n_K$. Thus $|a_{n_i} - x| < \epsilon$ for $n_i > n_K$ and $\{a_{n_i}\}$
+    converges to $x$. $\blacksquare$\\
+
+    \textbf{Ending 2} Consider the sequence of upper bounds on these intervals $u_1, u_2, ... $, and note that
+    they are bounded and decreasing and therefore converge to some limit, $U$. Similarly, the lower bounds
+    converge to some limit $L$. Because the width of interval $n$ is $\frac{u-l}{2^n}$, $\lim_{n \to \infty} u_n - l_n = 0$.
+    Finally we know that $u_i \geq a_{n_i} \geq l_i$ for all $i$, so by the squeeze theorem $\{a_{n_i}\}$ converges. 
+    \todo[inline]{Make the alternate ending of BW more rigorous} $\blacksquare$
 \end{document}
