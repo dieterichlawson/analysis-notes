@@ -3,7 +3,8 @@
 \usepackage[small,bf]{caption}
 \input defs.tex
 \setlength{\parindent}{0pt}
-\title{Math 171 Notes}
+\title{Notes on Real Analysis for Math 171}
+\author{Dieterich Lawson}
 
 \begin{document}
 \maketitle
@@ -31,7 +32,7 @@
     $F$ and $O$ axioms hold for the rationals, $\rationals$, but $O$ does not hold for the complex numbers.
   \subsection{The Completeness Axiom}
     Completeness distinguishes the Reals from the Rationals. Intuitively, there are 'holes' in the rationals at
-    irrational numbers like $\sqrt{2}$. To discuss completeness, we need to introduce the "supremum".\\
+    irrational numbers like $\sqrt{2}$. To discuss completeness, we need to introduce some definitions.\\
 
     Consider a set $S$, such that $S \subset \reals$.\\
     $S$ is \emph{bounded above} if $\exists$ $a \in \reals$ such that $x \leq a$ $\forall x \in S$.\\
@@ -45,15 +46,14 @@
     Supremums are unique by (ii) because if $a_1,a_2$ are upper bounds and $a_1 \leq a_2$ and $a_2 \leq a_1$ then $a_1 = a_2$.
     Thus it makes sense to talk about "the" supremum.\\
 
-    There is also an "infimum" or greatest lower bound that follows from repeating these arguments with $-S$.
+    There is also an "infimum" or greatest lower bound that follows from repeating these arguments with $-S$.\\
 
-    \subsubsection{The maximum and supremum of a set are not necessarily the same}
-      It is important to note that the maximum is not necessarily the same thing as the supremum:\\
+    \textbf{Note:} It is important to note that the maximum and supremum of a set are not necessarily the same.\\
 
       The maximum is defined as $a \in S$ such that $x \leq a$ for all $x \in S$\\
       The supremum is defined as $a$ such that $x \leq a$ for all $x \in S$ and (ii)\\
 
-      Note that the supremum does not have to be in $S$. In fact the max of $S$ exists if and only if the supremum of $S$
+      The supremum does not have to be in $S$. In fact the max of $S$ exists if and only if the supremum of $S$
       is a member of $S$, in which case the max of $S$ is equal to the supremum of $S$. Conversely, if $\sup S \notin S$ then
       the max of $S$ does not exist.\\
 
@@ -150,7 +150,7 @@
     elements of $\{a_n\}$ in this way to construct a subsequence, $\{a_{n_i}\}$, such that $a_{n_i} \in I_i$ for all $n_i$.
     We will show that $\{a_{n_i}\}$ converges.\\
     
-    \textbf{Ending 1} We know that there must be one element, $x$ in all $I_i$. Let $\epsilon > 0$ and pick
+    \textbf{Ending 1} We know that there must be one element, $x$ in all $I_n$. Let $\epsilon > 0$ and pick
     an interval, $I_N$ such that the width of $I_N$, $\frac{u - l}{2^N}$ is less than epsilon, and pick an 
     element, $a_{n_K}$ such that $a_{n_K} \in I_N$. $x$ must be in this interval, and by construction 
     $a_{n_i} \in I_N$ for all $n_i > n_K$. Thus $|a_{n_i} - x| < \epsilon$ for $n_i > n_K$ and $\{a_{n_i}\}$
@@ -161,4 +161,44 @@
     converge to some limit $L$. Because the width of interval $n$ is $\frac{u-l}{2^n}$, $\lim_{n \to \infty} u_n - l_n = 0$.
     Finally we know that $u_i \geq a_{n_i} \geq l_i$ for all $i$, so by the squeeze theorem $\{a_{n_i}\}$ converges. 
     \todo[inline]{Make the alternate ending of BW more rigorous} $\blacksquare$
+  \subsection{Cauchy Sequences}
+    A sequence $\{a_n\}$ is called Cauchy if for all $\epsilon > 0$ there exists a positive integer $N$ such 
+    that $|a_n - a_m| < \epsilon$ for all $n, m \geq N$. Intuitively, this says a sequence is Cauchy if it
+    has a tail where the elements are arbitrarily close together. Note that this is not a statement about
+    consecutive elements in $\{a_n\}$, it is a statement about all elements past $N$.\\
+
+    There are various convergence results related to Cauchy sequences.
+    \subsubsection{A sequence converges if and only if it is Cauchy}
+    \thm A sequence converges if and only if it is Cauchy.\\
+
+    \pf ($\implies$) Assume that $\{a_n\}$ is a convergent series with limit $L$. Let $\epsilon > 0$ and
+    choose $N$ such that $|a_n - L| < \epsilon/2$ for all $n \geq N$.\\
+
+    Now choose $m,n \geq N$. By the triangle inequality we know that $|a_n - a_m| \leq |a_n - L| + |L - a_m| 
+    \leq \epsilon/2 + \epsilon/2 = \epsilon$. Thus for all $n, m\geq N$, $|a_n - a_m| < \epsilon$, and 
+    $\{a_n\}$ must be Cauchy.\\
+
+    ($\impliedby$) Assume that $\{a_n\}$ is a Cauchy sequence. We will show that $\{a_n\}$ is convergent
+    in three steps: (1) Show that any Cauchy sequence is bounded. (2) Use Bolzano-Weierstrass to obtain
+    a convergent subsequence. (3) Show that (2) implies that the whole sequence converges.\\
+
+    Take $\epsilon = 1$. Because $\{a_n\}$ is Cauchy we know that there exists an $N$ such that 
+    $|a_n - a_m| < 1$ for all $n, m \geq N$. This implies for all $n \geq N$:
+    \begin{align*}
+      |a_n - a_N| < 1\\
+      ||a_n| - |a_N|| < 1\\
+      |a_n| - |a_N| < 1\\
+      |a_n| <  |a_N| + 1
+    \end{align*}
+    Because $N$ is finite, there are finitely many elements of $\{a_n\}$ where $n < N$, so we know that for all
+    $n$ (not just $n \geq N$), $|a_n| \leq \max(|a_1|,|a_2|,\ldots,|a_N|+1)$. Thus $\{a_n\}$ is bounded.\\
+
+    Because $\{a_n\}$ is bounded we know by the Bolzano-Weierstrass theorem that there must exist 
+    a convergent subsequence of $\{a_n\}$, $\{a_{n_i}\}$ with limit $L$.\\
+
+    Take $\epsilon > 0$. Then we know that there exists an $N$ such that $|a_{n_i} - L| < \epsilon/2$
+    for all $n_i \geq N$. Additionally, because $\{a_n\}$ is Cauchy we know that there exists an $N'$
+    such that $|a_n - a_m| < \epsilon/2$ for all $n,m \geq N'$. Then, by the triangle inequality we know
+    that $|a_n - L| \leq |a_n - a_{n_i}| + |a_{n_i} - L| < \epsilon/2 + \epsilon/2 = \epsilon$. Thus
+    $\{a_n\}$ must converge, and its limit must be $L$. $\blacksquare$
 \end{document}
