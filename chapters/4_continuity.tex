@@ -1,1 +1,69 @@
 \section{Continuity of Real Functions}
+  Let $f$ be a function $f:\reals \to \reals$. Then $f$ is continuous at $c \in [a,b]$ if
+  for all $\epsilon > 0$ there exists $\delta > 0$ such that $|f(x) - f(c)| < \epsilon$
+  whenever $|x-c| < \delta$.\\
+
+  A function is continuous on an interval $[a,b]$ if it is continuous at every point 
+  $c \in [a,b]$.
+
+  \subsection{Algebraic Properties of Continuous Functions}
+    Continuous functions are closed under addition, subtraction, multiplication,
+    division when the denominator is not 0, and composition.\\
+
+    \todo[inline]{Prove algebraic properties of continuous functions}
+  \subsection{The Heine--Borel Theorem}
+    The Heine-Borel theorem is a result of fundamental importance to analysis that states that
+    if we cover a closed interval of the real line with open intervals we can extract a finite 
+    subset that still covers the closed interval. This result has several consequences for 
+    continuous functions.\\
+
+    This is not true for the $\rationals$, for example, because you could take the interval to
+    be $[1,2]$, which includes $\sqrt{2}$. You would need an infinite number of subintervals of
+    rationals to come close to $\sqrt{2}$ so it is impossible to extract a finite subcovering.\\
+
+    \thm Let $[a,b] \in \reals$ and let $\cal{I}$ be an infinite collection of open intervals 
+    such that  $[a,b] \subset \cup \cal I$. Then there exists a finite subset $I_1, \ldots, I_n 
+    \in \cal I$ which 
+    already cover $[a,b]$, i.e. $[a,b] \subset \cup_{i=1}^n I_i$\\
+  
+    \pf Let the set $X$ be the set of points in $[a,b]$ that are coverable with a finite number 
+    of $I$. Formally,
+    \begin{align*}
+      X = \{ x \in (a,b] \mid [a,x] \subset \bigcup_{i=1}^n I_i \text{ for some } I_1, \ldots
+      I_n \in \cal I \}
+    \end{align*}
+    To see that $X$ is not empty note that $a \in I = (l_0,u_0)$ for some $I \in \cal I$. Then we
+    can choose $x_0$ such that $a < x_0 < u_0$, which means that $x_0$ is also in $I$ and 
+    therefore $x_0 \in X$. Because $X$ is nonempty and bounded above (by $b$), it must have 
+    a least upper bound $c$, such that $a < x_0 \leq c$. The remainder of the proof will show
+    that $c \in X$, and then that $c = b$, thus proving the theorem.\\
+
+    We know that $c \in I = (l_1,u_1)$ for some $I \in \cal I$. Additionally, $l_1 < c$, and thus
+    $l_1$ cannot be an upper bound for $X$. Because $l_1$ is less than the upper bound for $X$,
+    there exists an $x \in X, x > a$ such that $l_1 < x \leq c$. Then, by the definition of $X$
+    there exists $I_1,\ldots,I_n \in \cal I$ such that 
+    \begin{align*}
+      [a,x] \subset \bigcup_{i=1}^n I_i 
+    \end{align*}
+    But because $x$ and $c$ are both contained in the chosen interval $I$, we know that 
+    \begin{align*}
+      [a,c] \subset \left(\bigcup_{i=1}^n I_i \right)\cup I
+    \end{align*}
+    And so the supremum of $X$, $c$, is a member of $X$. Next we will show that $c = b$.\\
+
+    To see that $c = b$, first note that by construction $c \in [a,b]$ and so $c \leq b$. Thus 
+    it suffices to show that $c$ is not less than $b$. Assume the contradiction, namely that
+    $c < b$. Because $c \in X$ we know that we can cover $[a,c]$ with a finite union of open 
+    intervals, i.e.
+    \begin{align*}
+      [a,c] \subset \bigcup_{i=1}^n I_i
+    \end{align*}
+    for some $I_1, \ldots I_n \in \cal I$. Thus $c \in I_j =(l_2,u_2)$ for some $j, \;
+    1 \leq j \leq n$. However, because $I_j$ is open we know that we can pick a $d \in I_j$ such 
+    that $c < d < b$ and $c < d < u_2$. But we have already covered $[a,d]$ with $\cup_{i=1}^n
+    I_i$, i.e. we have covered $[a,d]$ with a finite open cover and thus $d \in X$. Furthermore,
+    we previously picked $c$ such that it was the supremum of $X$ but $d > c$, and so we have 
+    reached a contradiction and $c = b$. $\blacksquare$
+  \subsection{Consequences of Heine-Borel}
+    \todo[inline]{Prove that if f is continuous on an interval then it is bounded above and below
+      and achieves its max and min}
