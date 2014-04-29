@@ -8,21 +8,26 @@
   that the series $\sum_{k=1}^{\infty} a_k$ converges and has sum $S$. If $\{s_n\}$ does 
   not converge, i.e. does not have a limit, then we say that the series diverges.
   
-  \subsection{Results on Series}
+  \subsection{Convergence of Series}
     \thm If $\sum_{i=1}^{\infty} a_n$ converges, then $\lim a_n = 0$\\
 
     \pf \todo[inline]{Prove that if $\sum_{i=1}^{\infty} a_n$ converges, then $\lim a_n = 0$}
-    $\blacksquare$\\
 
     \textbf{Note:} The converse of the above statement is not true. For example 
     $\sum_{i=1}^{\infty} 1/n$ does not converge, but $\lim a_n =0$.\\
-
+ 
     \thm If $\sum a_n$, $\sum b_n$ converge to $S$ and $T$ respectively, and $\alpha, \beta \in 
     \reals$ then $\lim_{n \to \infty} \sum_{k=1}^n \alpha a_n + \sum_{k=1}^n \beta b_n = \alpha 
     S + \beta T$.\\
 
     \pf \todo[inline]{Prove linearity of convergence for series}
-    $\blacksquare$
+
+    \thm If all terms of a series $\sum a_n$ are greater than 0, then $\sum a_n$ converges
+    if and only if the sequence of partial sums $\{s_n\}$ is bounded.\\
+
+    \pf \todo[inline]{Prove that if all terms of a series $\sum a_n$ are greater than 0, 
+    then $\sum a_n$ converges if and only if the sequence of partial sums $\{s_n\}$ is bounded}
+ 
   \subsection{Absolute Convergence}
     A series, $\sum_{n=1}^{\infty} a_n$ converges absolutely if $\sum_{n=1}^{\infty} |a_n|$ 
     converges. If a series converges but does not converge absolutely then it is called 
@@ -34,6 +39,11 @@
     $\sum_{n=1}^{\infty} a_n$ as $\sum_{n=1}^{\infty} ((a_n)^+ - (a_n)^-)$. Thus the series
     is absolutely convergent if and only of both $\sum_{n=1}^{\infty} (a_n)^+$ and 
     $\sum_{n=1}^{\infty} (a_n)^-$ converge.\\
+
+    \thm Absolute convergence implies converges.\\
+
+    \pf \todo[inline]{Prove that absolute convergence implies convergence}
+
   \subsection{Rearrangements}
     A rearrangement of a sequence $\{a_n\}$ is a 1-1 onto mapping $f:\naturals \to \naturals$.
     Intuitively, it's exactly like what it sounds like -- it just changes the ordering of a 
@@ -41,5 +51,74 @@
 
     If $\sum_{n=1}^{\infty} a_n$ is conditionally convergent, it is possible to reorder the terms
     and get different limits. Put another way, not all rearrangements converge or converge to 
-    the same limit.
+    the same limit.\\
+    \todo[inline]{Find example of series that has rearrangements with different limits}
+    \thm If $\sum a_n$ is absolutely convergent then any rearrangement is also absolutely 
+    convergent and has the same sum as $\sum a_n$.\\
+
+    \pf \todo[inline]{Prove that if If $\sum a_n$ is absolutely convergent then any rearrangement
+    is absolutely convergent, and has the same sum as $\sum a_n$} 
+  \subsection{Convergence Tests}
+    \subsubsection{Ratio Test}
+      \todo[inline]{Write up ratio test}
+    \subsubsection{Root Test}
+      \todo[inline]{Write up root test}
   \subsection{Power Series}
+    A power series is an infinite series of the form
+    \begin{align*}
+      P(x) = \sum_{n=0}^{\infty} a_nx^n = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n + \cdots
+    \end{align*}
+    This power series is centered at 0, and is the special case of a power series with an
+    arbitrary center, $c$:
+    \begin{align*}
+      P(x,c) = \sum_{n=0}^{\infty} a_n(x-c)^n = a_0 + a_1(x-c) + a_2(x-c)^2 + \cdots + 
+                                                                            a_n(x-c)^n + \cdots
+    \end{align*}
+    For all power series one of three possibilities holds
+    \begin{enumerate}
+      \item[(i)] 
+        $P(x)$ converges only for $x = 0$. This occurs if $a_n$ grows extremely rapidly. For
+        example\\
+        \begin{align*}
+          \sum_{n=0}^{\infty} n!x^n = 1 + x + 2!x^2 + 3!x^3 + \cdots + n!x^n + \cdots
+        \end{align*}
+        By the ratio test we have:
+        \begin{align*}
+          \lim_{n \to \infty} \left|\dfrac{a_{n+1}}{a_n}\right| 
+          = \lim_{n \to \infty} \dfrac{(n+1)!x^{n+1}}{n!x^n} 
+          = \lim_{n \to \infty} (n+1)x  = \infty
+        \end{align*}
+        Thus for all non-zero $x$, this power series diverges.
+      \item[(ii)] 
+        $P(x)$ converges for all $x$. This occurs if the $a_n$ go to 0 quickly, for example
+        \begin{align*}
+          e^x = \sum_{n=0}^{\infty} \dfrac{x^n}{n!} = 1 + x + \dfrac{x^2}{2!} + \cdots + 
+                                                                       \dfrac{x^n}{n!} + \cdots
+        \end{align*}
+        To see that this power series is convergent we will use the ratio test
+        \begin{align*}
+          \lim_{n \to \infty} \left|\dfrac{a_{n+1}}{a_n}\right| 
+          = \lim_{n \to \infty} \left|\dfrac{x^{n+1}}{(n+1)!}\dfrac{n!}{x^n}\right|
+          = \lim_{n \to \infty} \dfrac{x}{n+1} = 0 
+        \end{align*}
+        Thus the power series for $e^x$ converges for all finite $x$.
+      \item[(iii)] 
+        There exists $\rho > 0$ such that $P(x)$ converges absolutely for $|x| < \rho$,
+        diverges for $|x| > \rho$. When $|x| = \rho$ there is no statement. In this case 
+        $\rho$ is known as "the radius of convergence". For example
+        \begin{align*}
+          \sum_{n=0}^{\infty} 2^nx^n = 1 + 2x + 4x^2 + \cdots + 2^nx^n + \cdots
+        \end{align*}
+        Using the ratio test we have that:
+        \begin{align*}
+          \rho = \lim_{n \to \infty} \left|\dfrac{a_{n+1}}{a_n}\right| 
+          = \lim_{n \to \infty} \left|\dfrac{2^{n+1} x^{n+1}}{2^nx^n}\right|
+          = \lim_{n \to \infty} 2|x|
+        \end{align*}
+         The series converges when $\rho < 1$, which occurs when $|x| < 1/2$. Technically,
+         we should check what happens when $|x| = 1/2$, but spoiler alert: it diverges...
+    \end{enumerate}
+    
+    We can actually prove that one of these three possibilities always holds.\\
+
+    \pf \todo[inline]{Prove 3 possibilities for power sequences}

@@ -7,3 +7,10 @@
 \contentsline {todo}{Make the alternate ending of BW more rigorous}{7}
 \contentsline {todo}{Prove that if $\DOTSB \sum@ \slimits@ _{i=1}^{\infty } a_n$ converges, then $\qopname \relax m{lim}a_n = 0$}{9}
 \contentsline {todo}{Prove linearity of convergence for series}{9}
+\contentsline {todo}{Prove that if all terms of a series $\DOTSB \sum@ \slimits@ a_n$ are greater than 0, then $\DOTSB \sum@ \slimits@ a_n$ converges if and only if the sequence of partial sums $\{s_n\}$ is bounded}{9}
+\contentsline {todo}{Prove that absolute convergence implies convergence}{10}
+\contentsline {todo}{Find example of series that has rearrangements with different limits}{10}
+\contentsline {todo}{Prove that if If $\DOTSB \sum@ \slimits@ a_n$ is absolutely convergent then any rearrangement is absolutely convergent, and has the same sum as $\DOTSB \sum@ \slimits@ a_n$}{10}
+\contentsline {todo}{Write up ratio test}{10}
+\contentsline {todo}{Write up root test}{10}
+\contentsline {todo}{Prove 3 possibilities for power sequences}{11}
