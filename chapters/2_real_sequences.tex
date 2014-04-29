@@ -89,15 +89,13 @@
     interval, and by construction $a_{n_i} \in I_N$ for all $n_i > n_K$. Thus $|a_{n_i} - x| < 
     \epsilon$ for $n_i > n_K$ and $\{a_{n_i}\}$ converges to $x$. $\blacksquare$\\
 
-    \textbf{Ending 2} Consider the sequence of upper bounds on these intervals $u_1, u_2, ... $,
+    \textbf{Ending 2} Consider the sequence of upper bounds on these intervals $u_1, u_2, \ldots$,
     and note that they are bounded and decreasing and therefore converge to some limit, $U$. 
-    Similarly, the lower bounds converge to some limit $L$. Because the width of interval $n$ is
+    Similarly, the lower bounds of the intervals, $l_1, l_2, \ldots$ are bounded and increasing
+    and therefore converge to some limit $L$. Because the width of interval $n$ is
     $\frac{u-l}{2^n}$, $\lim_{n \to \infty} u_n - l_n = 0$. Finally we know that $u_i \geq 
     a_{n_i} \geq l_i$ for all $i$, so by the squeeze theorem $\{a_{n_i}\}$ converges. 
-    $\blacksquare$\\
-    
-    \todo[inline]{Make the alternate ending of BW more rigorous} 
-
+    $\blacksquare$
   \subsection{Cauchy Sequences}
     A sequence $\{a_n\}$ is called Cauchy if for all $\epsilon > 0$ there exists a positive 
     integer $N$ such that $|a_n - a_m| < \epsilon$ for all $n, m \geq N$. Intuitively, this

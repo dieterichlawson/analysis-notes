@@ -4,7 +4,6 @@
 \contentsline {todo}{Define subsequences}{5}
 \contentsline {todo}{Define $\qopname \relax m{lim\tmspace +\thinmuskip {.1667em}sup}$ and $\qopname \relax m{lim\tmspace +\thinmuskip {.1667em}inf}$}{5}
 \contentsline {todo}{Prove the Squeeze Theorem}{6}
-\contentsline {todo}{Make the alternate ending of BW more rigorous}{7}
 \contentsline {todo}{Prove that if $\DOTSB \sum@ \slimits@ _{i=1}^{\infty } a_n$ converges, then $\qopname \relax m{lim}a_n = 0$}{9}
 \contentsline {todo}{Prove linearity of convergence for series}{9}
 \contentsline {todo}{Prove that if all terms of a series $\DOTSB \sum@ \slimits@ a_n$ are greater than 0, then $\DOTSB \sum@ \slimits@ a_n$ converges if and only if the sequence of partial sums $\{s_n\}$ is bounded}{9}
